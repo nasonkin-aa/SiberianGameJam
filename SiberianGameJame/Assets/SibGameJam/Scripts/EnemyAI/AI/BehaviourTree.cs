@@ -3,21 +3,23 @@ using UnityEngine;
 
 namespace EnemyAI
 {
+    [System.Serializable]
     public class BehaviourTree : Node 
     {
-        private readonly IPolicy policy;
+        private readonly IPolicy _policy;
         
         public BehaviourTree(string name, IPolicy policy = null) : base(name) 
         {
-            this.policy = policy ?? Policies.RunForever;
+            _policy = policy ?? Policies.RunForever;
         }
 
-        public override Status Process() 
+        public override Status Process()
         {
-            Status status = children[currentChild].Process();
-            if (policy.ShouldReturn(status)) return status;
+            var status = Children[CurrentChild].Process();
+            if (_policy.ShouldReturn(status)) return status;
             
-            currentChild = (currentChild + 1) % children.Count;
+            CurrentChild = (CurrentChild + 1) % Children.Count;
+            
             return Status.Running;
         }
 
@@ -30,9 +32,9 @@ namespace EnemyAI
 
         static void PrintNode(Node node, int indentLevel, StringBuilder sb) 
         {
-            sb.Append(' ', indentLevel * 2).AppendLine(node.name);
+            sb.Append(' ', indentLevel * 2).AppendLine(node.Name);
             
-            foreach (Node child in node.children)
+            foreach (Node child in node.Children)
                 PrintNode(child, indentLevel + 1, sb);
         }
     }

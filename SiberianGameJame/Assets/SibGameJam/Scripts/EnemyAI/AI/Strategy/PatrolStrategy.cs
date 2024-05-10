@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,34 +6,61 @@ namespace EnemyAI
 {
     public class PatrolStrategy : IStrategy
     {
-        private readonly IMoveable moveable;
-        private readonly List<Transform> patrolPoints;
-        private int currentIndex;
+        private readonly IReadOnlyList<Transform> _patrolPoints;
+        private readonly float _minWaitTime;
+        private readonly float _maxWaitTime;
+        
+        private readonly MonoBehaviour _ctx;
+        private readonly IMoveable _moveable;
+        
+        private int _currentIndex;
+        private Coroutine _coroutine;
 
-        public PatrolStrategy(
-            IMoveable moveable,
-            List<Transform> patrolPoints)
+        public PatrolStrategy(MonoBehaviour ctx, IMoveable moveable)
         {
-            this.moveable = moveable;
-            this.patrolPoints = patrolPoints;
+            _ctx = ctx;
+            _moveable = moveable;
+        }
+        
+        public PatrolStrategy(MonoBehaviour ctx, 
+            IMoveable moveable, 
+            IReadOnlyList<Transform> patrolPoints,
+            float minWaitTime = 0,
+            float maxWaitTime = 0
+            ) : this(ctx, moveable)
+        {
+            _patrolPoints = patrolPoints;
+            _minWaitTime = minWaitTime;
+            _maxWaitTime = maxWaitTime;
         }
 
         public Node.Status Process() 
         {
-            if (currentIndex == patrolPoints.Count) return Node.Status.Success;
-
-            var target = patrolPoints[currentIndex];
-            moveable.MoveTo(target.position);
-
-            if (moveable.Reached(target.position))
+            if (_currentIndex >= _patrolPoints.Count)
             {
-                currentIndex++;
-                moveable.MoveBy(Vector3.zero);
+                Reset();
+                return Node.Status.Success;
             }
+
+            var position = _patrolPoints[_currentIndex].position;
+            _moveable.MoveTo(position);
+
+            if (!_moveable.Reached(position)) return Node.Status.Running;
+            
+            _moveable.Stop();
+            _coroutine ??= _ctx.StartCoroutine(WaitSomeTime());
 
             return Node.Status.Running;
         }
+
+        public void Reset() => _currentIndex = 0;
         
-        public void Reset() => currentIndex = 0;
+        private IEnumerator WaitSomeTime()
+        {
+            yield return new WaitForSeconds(Random.Range(_minWaitTime, _maxWaitTime));
+            
+            _currentIndex++;
+            _coroutine = null;
+        }
     }
 }

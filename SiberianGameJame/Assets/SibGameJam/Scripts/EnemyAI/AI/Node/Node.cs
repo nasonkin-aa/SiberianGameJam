@@ -8,27 +8,27 @@ namespace EnemyAI
         
         public enum Status { Success, Failure, Running }
         
-        public readonly string name;
-        public readonly int priority;
+        public readonly string Name;
+        public readonly int Priority;
         
-        public readonly List<Node> children = new();
-        protected int currentChild;
+        public readonly List<Node> Children = new(1);
+        protected int CurrentChild;
 
         protected Node(string name = DefaultName, int priority = 0) 
         {
-            this.name = name;
-            this.priority = priority;
+            Name = name;
+            Priority = priority;
         }
         
-        public void AddChild(Node child) => children.Add(child);
+        public void AddChild(Node child) => Children.Add(child);
         
-        public virtual Status Process() => children[currentChild].Process();
+        public virtual Status Process() => Children[CurrentChild].Process();
 
         public virtual void Reset() 
         {
-            currentChild = 0;
+            CurrentChild = 0;
             
-            foreach (var child in children)
+            foreach (var child in Children)
                 child.Reset();
         }
     }

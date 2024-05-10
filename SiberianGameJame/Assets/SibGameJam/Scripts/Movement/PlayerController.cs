@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IMoveable))]
+[RequireComponent(typeof(Entity))]
 public class PlayerController : MonoBehaviour
 {
-    private IMoveable _moveable;
+    private Entity _entity;
 
     private void Awake()
     {
-        _moveable = GetComponent<IMoveable>();
+        _entity = GetComponent<Entity>();
     }
 
     private void Update()
@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
         var yInput = Input.GetAxisRaw("Vertical");
 
         var delta = new Vector2(xInput, yInput);
-        _moveable.MoveBy(delta);
+        _entity.Moveable.MoveBy(delta);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            if (_entity.Jumpable.CanJump) _entity.Jumpable.Jump();
     }
 }
