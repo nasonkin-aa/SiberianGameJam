@@ -11,7 +11,7 @@ public class RigidbodyJump : MonoBehaviour, IJumpable
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        groundChecker.HitGround += () => CanJump = true;
+        // groundChecker.HitGround += () => CanJump = true;
     }
 
     public float JumpHeight => jumpHeight;
@@ -21,5 +21,10 @@ public class RigidbodyJump : MonoBehaviour, IJumpable
     {
         _rigidbody2D.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         CanJump = false;
+    }
+
+    public void HandleLogic()
+    {
+        CanJump = groundChecker.OnGround;
     }
 }

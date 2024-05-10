@@ -19,6 +19,6 @@ public class PlayerController : MonoBehaviour
         _entity.Moveable.MoveBy(delta);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            if (_entity.Jumpable.CanJump) _entity.Jumpable.Jump();
+            _entity.Jumpable.TryJump();
     }
 }

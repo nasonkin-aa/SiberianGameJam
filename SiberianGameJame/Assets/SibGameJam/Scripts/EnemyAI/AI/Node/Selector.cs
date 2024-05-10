@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace EnemyAI
 {
     public class Selector : Node 
@@ -6,23 +8,40 @@ namespace EnemyAI
 
         public override Status Process() 
         {
-            if (CurrentChild >= Children.Count) 
+            // if (EndIteration) 
+            // {
+            //     Reset();
+            //     return Status.Failure;
+            // }
+            // 
+            // switch (CurrentChild.Process()) 
+            // {
+            //     case Status.Running:
+            //         return Status.Running;
+            //     case Status.Success:
+            //         Reset();
+            //         return Status.Success;
+            //     default:
+            //         ChildIndex++;
+            //         return Status.Running;
+            // }
+            
+            foreach (var child in Children) 
             {
-                Reset();
-                return Status.Failure;
+                switch (child.Process()) 
+                {
+                    case Status.Running:
+                        return Status.Running;
+                    case Status.Success:
+                        Reset();
+                        return Status.Success;
+                    default:
+                        continue;
+                }
             }
-
-            switch (Children[CurrentChild].Process()) 
-            {
-                case Status.Running:
-                    return Status.Running;
-                case Status.Success:
-                    Reset();
-                    return Status.Success;
-                default:
-                    CurrentChild++;
-                    return Status.Running;
-            }
+            
+            Reset();
+            return Status.Failure;
         }
     }
 }

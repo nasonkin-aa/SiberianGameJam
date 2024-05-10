@@ -12,8 +12,11 @@ namespace EnemyAI
         public readonly int Priority;
         
         public readonly List<Node> Children = new(1);
-        protected int CurrentChild;
+        protected int ChildIndex;
 
+        public Node CurrentChild => Children[ChildIndex];
+        public bool EndIteration => ChildIndex >= Children.Count;
+        
         protected Node(string name = DefaultName, int priority = 0) 
         {
             Name = name;
@@ -22,11 +25,11 @@ namespace EnemyAI
         
         public void AddChild(Node child) => Children.Add(child);
         
-        public virtual Status Process() => Children[CurrentChild].Process();
+        public virtual Status Process() => Children[ChildIndex].Process();
 
         public virtual void Reset() 
         {
-            CurrentChild = 0;
+            ChildIndex = 0;
             
             foreach (var child in Children)
                 child.Reset();

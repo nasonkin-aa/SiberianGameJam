@@ -6,9 +6,11 @@ public interface IJumpable
     
     void Jump();
 
-    void TryJump()
+    bool TryJump()
     {
-        if (CanJump)
-            Jump();
+        if (CanJump) Jump();
+        return CanJump;
     }
+
+    void HandleLogic();
 }

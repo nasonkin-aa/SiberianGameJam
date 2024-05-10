@@ -7,6 +7,7 @@ namespace EnemyAI
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private List<Transform> patrolPoints;
+        [SerializeField] private Collider2D collider;
         
         private BehaviourTree _tree;
         private Entity _entity;
@@ -24,7 +25,12 @@ namespace EnemyAI
         private void Start()
         {
             _tree = new BehaviourTree("Entity");
-            _tree.AddChild(new Leaf("Patrol", new PatrolStrategy(this, _entity.Moveable, patrolPoints)));
+            
+            var selector = new Selector("Main");
+            selector.AddChild(new Leaf("Follow", new FollowStrategy(_entity, collider)));
+            selector.AddChild(new Leaf("Patrol", new PatrolStrategy(_entity, patrolPoints)));
+            
+            _tree.AddChild(selector);
         }
 
         private void Update()

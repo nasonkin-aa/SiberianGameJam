@@ -15,10 +15,10 @@ namespace EnemyAI
 
         public override Status Process()
         {
-            var status = Children[CurrentChild].Process();
+            var status = Children[ChildIndex].Process();
             if (_policy.ShouldReturn(status)) return status;
             
-            CurrentChild = (CurrentChild + 1) % Children.Count;
+            ChildIndex = (ChildIndex + 1) % Children.Count;
             
             return Status.Running;
         }
@@ -34,7 +34,7 @@ namespace EnemyAI
         {
             sb.Append(' ', indentLevel * 2).AppendLine(node.Name);
             
-            foreach (Node child in node.Children)
+            foreach (var child in node.Children)
                 PrintNode(child, indentLevel + 1, sb);
         }
     }

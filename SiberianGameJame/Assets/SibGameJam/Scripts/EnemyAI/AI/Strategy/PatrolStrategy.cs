@@ -10,24 +10,23 @@ namespace EnemyAI
         private readonly float _minWaitTime;
         private readonly float _maxWaitTime;
         
-        private readonly MonoBehaviour _ctx;
+        private readonly Entity _entity;
         private readonly IMoveable _moveable;
         
         private int _currentIndex;
         private Coroutine _coroutine;
 
-        public PatrolStrategy(MonoBehaviour ctx, IMoveable moveable)
+        public PatrolStrategy(Entity entity)
         {
-            _ctx = ctx;
-            _moveable = moveable;
+            _entity = entity;
+            _moveable = entity.Moveable;
         }
         
-        public PatrolStrategy(MonoBehaviour ctx, 
-            IMoveable moveable, 
+        public PatrolStrategy(Entity entity, 
             IReadOnlyList<Transform> patrolPoints,
             float minWaitTime = 0,
             float maxWaitTime = 0
-            ) : this(ctx, moveable)
+            ) : this(entity)
         {
             _patrolPoints = patrolPoints;
             _minWaitTime = minWaitTime;
@@ -48,7 +47,7 @@ namespace EnemyAI
             if (!_moveable.Reached(position)) return Node.Status.Running;
             
             _moveable.Stop();
-            _coroutine ??= _ctx.StartCoroutine(WaitSomeTime());
+            _coroutine ??= _entity.StartCoroutine(WaitSomeTime());
 
             return Node.Status.Running;
         }

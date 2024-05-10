@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IMoveable))]
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, ITargetable
 {
     public IMoveable Moveable { get; private set; }
     public IJumpable Jumpable { get; private set; }
@@ -14,6 +13,9 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
-        Moveable.Move();
+        Moveable?.Move();
+        Jumpable?.HandleLogic();
     }
+
+    public Vector3 Position => transform.position;
 }

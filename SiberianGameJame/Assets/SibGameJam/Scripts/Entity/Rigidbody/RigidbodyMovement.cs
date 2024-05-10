@@ -18,6 +18,7 @@ public class RigidbodyMovement : MonoBehaviour, IMoveable
     #region IMoveable
 
     public Vector3 Position => transform.position;
+    public Vector2 Velocity => _rigidbody2D.velocity;
 
     public void MoveTo(Vector3 position) => _direction = (position - Position).normalized;
 

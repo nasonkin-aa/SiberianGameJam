@@ -6,22 +6,22 @@ namespace EnemyAI
 
         public override Status Process() 
         {
-            if (CurrentChild >= Children.Count) 
+            if (EndIteration) 
             {
                 Reset();
                 return Status.Success;
             }
 
-            switch (Children[CurrentChild].Process()) 
+            switch (CurrentChild.Process()) 
             {
                 case Status.Running:
                     return Status.Running;
                 case Status.Failure:
-                    CurrentChild = 0;
+                    ChildIndex = 0;
                     return Status.Failure;
                 default:
-                    CurrentChild++;
-                    return CurrentChild == Children.Count ? Status.Success : Status.Running;
+                    ChildIndex++;
+                    return ChildIndex == Children.Count ? Status.Success : Status.Running;
             }
         }
     }
