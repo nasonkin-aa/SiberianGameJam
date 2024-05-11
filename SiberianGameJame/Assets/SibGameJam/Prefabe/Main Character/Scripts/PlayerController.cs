@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public List<GameObject> moduls;
     public BreakController breakContriller;
+    public InventoryHUD inventory;
     
     [SerializeField]
     private ArmsController armsController;
@@ -96,6 +97,14 @@ public class PlayerController : MonoBehaviour
                     breaks.Add(module.GetComponentInChildren<ModuleBreak>());
                 }
             });
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (inventory.GetStatus())
+                inventory.CloseInventory();
+            else
+                inventory.OpenInventory();
         }
 
         if (Input.GetKeyDown(KeyCode.B))
