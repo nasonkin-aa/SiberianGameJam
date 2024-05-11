@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{48d6616c-99fd-4b3f-bf67-7e55b9a79b5c}">
+	<object class="AudioFile" id="{7a2452ba-ee35-4f11-8504-0bf5d4c2ffd4}">
 		<property name="assetPath">
-			<value>02-Кирка.wav</value>
+			<value>01-Кирка.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.37247165532879817</value>
+			<value>1.1012244897959185</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{b017bce5-ed7c-4a13-907e-b7a43d8c0a59}</destination>
