@@ -204,6 +204,48 @@ MonoBehaviour:
       Data3: 1105350532
       Data4: 1031622299
     Path: event:/Mine DIG
+  MusicGame:
+    Guid:
+      Data1: 400117161
+      Data2: 1220157452
+      Data3: 419687858
+      Data4: -1506015142
+    Path: event:/Music
+  Stone:
+    Guid:
+      Data1: 132845655
+      Data2: 1173043125
+      Data3: 1809407925
+      Data4: -1243295370
+    Path: event:/Stone DIG
+  MonsterWalk:
+    Guid:
+      Data1: 1195981319
+      Data2: 1331101606
+      Data3: 2143242938
+      Data4: -1282029734
+    Path: event:/MonsterWalk
+  PlasmaGun:
+    Guid:
+      Data1: 71372543
+      Data2: 1312682171
+      Data3: 1406279334
+      Data4: -901108987
+    Path: event:/PlasmaGun
+  RobotBipBop:
+    Guid:
+      Data1: -990777297
+      Data2: 1217240722
+      Data3: 1643127946
+      Data4: -718931959
+    Path: event:/Robot
+  RobotDamage:
+    Guid:
+      Data1: 1423978799
+      Data2: 1340739211
+      Data3: -840841056
+      Data4: -1290032830
+    Path: event:/MetallicSound
 --- !u!4 &272075825
 Transform:
   m_ObjectHideFlags: 0

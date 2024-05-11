@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e75f0b76-c1f2-4df0-965c-4f60a8c0cad3}">
+		<property name="assetPath">
+			<value>734829__quantumfellow__roboscan1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.9603854875283446</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b017bce5-ed7c-4a13-907e-b7a43d8c0a59}</destination>
+		</relationship>
+	</object>
+</objects>

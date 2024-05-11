@@ -19,6 +19,7 @@ public class Gun : Item
         if (Attached && Input.GetKeyDown(KeyCode.LeftShift))
         {
             Shoot();
+            AudioManager.instance.PlayPlasmaGun();
         }
     }
 
