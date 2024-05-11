@@ -9,7 +9,7 @@ public interface IMoveable
     void MoveTo(Vector3 position) => MoveBy((position - Position).normalized);
     void MoveBy(Vector3 delta);
     
-    void Move();
+    void Handle();
     void LookAt(Vector3 position);
     
     void Stop() => MoveBy(Vector3.zero);

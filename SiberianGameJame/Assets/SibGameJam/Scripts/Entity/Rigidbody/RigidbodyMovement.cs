@@ -2,7 +2,7 @@ using Tools;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class RigidbodyMovement : MonoBehaviour, IJumpable
+public class RigidbodyMovement : MonoBehaviour, IJumpable, IMoveable
 {
     [Header("Moveable")]
     [SerializeField] private float speed;
@@ -26,7 +26,7 @@ public class RigidbodyMovement : MonoBehaviour, IJumpable
     public Vector2 Velocity => _rigidbody2D.velocity;
 
     public void MoveBy(Vector3 delta) => Direction = delta.normalized;
-    public void Move() => _rigidbody2D.velocity = Velocity.With(Direction.x * speed);
+    void IMoveable.Handle() => _rigidbody2D.velocity = Velocity.With(Direction.x * speed);
 
     public void LookAt(Vector3 position)
     {
@@ -52,7 +52,7 @@ public class RigidbodyMovement : MonoBehaviour, IJumpable
         CanJump = false;
     }
 
-    public void Handle()
+    void IJumpable.Handle()
     {
         if (groundChecker.OnGround)
             CanJump = true;

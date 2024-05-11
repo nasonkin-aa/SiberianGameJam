@@ -1,10 +1,10 @@
+using System;
+
 public interface IDamageable
 {
-    float Health { get; }
-    
     bool CanTakeDamage { get; }
     bool CanHeal { get; }
-    
+
     void TakeDamage(float amount, ITargetable source = null);
     void Heal(float amount, ITargetable source = null);
 

@@ -1,6 +1,4 @@
-using Tools;
-
-public interface IJumpable : IMoveable
+public interface IJumpable
 {
     bool CanJump { get; }
     void Jump();

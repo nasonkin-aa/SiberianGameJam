@@ -1,14 +1,12 @@
 ﻿public interface IAttackable
 {
-    float Damage { get; }
-
-    void Attack();
+    void Attack(IDamageable target);
     bool CanAttack { get; }
 
-    bool TryAttack()
+    bool TryAttack(IDamageable target)
     {
         if (CanAttack)
-            Attack();
+            Attack(target);
 
         return CanAttack;
     }
