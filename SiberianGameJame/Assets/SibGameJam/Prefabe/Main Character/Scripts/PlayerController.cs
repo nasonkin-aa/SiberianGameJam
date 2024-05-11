@@ -54,7 +54,8 @@ public class PlayerController : MonoBehaviour
         var inputRawAxis = Input.GetAxisRaw("Horizontal");
         if(inputRawAxis != 0)
         {
-            rb.AddForce(new Vector2(Mathf.Sign(inputRawAxis), 0.5f) * playerSpeed * Time.deltaTime);
+            if (Mathf.Abs(rb.velocity.x) < 10)
+                rb.AddForce(new Vector2(Mathf.Sign(inputRawAxis), 0.5f) * playerSpeed * Time.deltaTime);
             
             if(inputRawAxis > 0 && !armsController.Flip || inputRawAxis < 0 && armsController.Flip)
             {

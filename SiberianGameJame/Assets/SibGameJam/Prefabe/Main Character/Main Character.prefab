@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 5197078823744729015}
   - component: {fileID: 2967653036865946418}
   - component: {fileID: 154664377252967619}
+  - component: {fileID: 4154991461277647208}
   m_Layer: 9
   m_Name: RightUpperLeg
   m_TagString: Untagged
@@ -271,6 +272,20 @@ MonoBehaviour:
   targetRotation: 0
   rb: {fileID: 1682497607679448552}
   force: 3000
+--- !u!114 &4154991461277647208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032058388913588432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 1032058388913588432}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &2033642887015657836
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +299,7 @@ GameObject:
   - component: {fileID: 1109901862862279377}
   - component: {fileID: 5820778367038055283}
   - component: {fileID: 8462268292019057562}
+  - component: {fileID: 2323004612969997786}
   m_Layer: 9
   m_Name: Main Character
   m_TagString: Untagged
@@ -298,7 +314,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033642887015657836}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.19, y: -2.558, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -310,7 +326,7 @@ Transform:
   - {fileID: 2556094510666540190}
   - {fileID: 7420027839604196479}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7166354750906144156
 Animator:
@@ -381,6 +397,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   playerPos: {fileID: 1250762038774810127}
+  mainCamera: {fileID: 0}
+  moduls:
+  - {fileID: 2908729904954811217}
+  - {fileID: 5095207877048841472}
+  - {fileID: 3619033454255798048}
+  - {fileID: 1032058388913588432}
+  breakContriller: {fileID: 2323004612969997786}
+  armsController: {fileID: 8462268292019057562}
   bodyBalance: {fileID: 3797729342566148813}
 --- !u!114 &8462268292019057562
 MonoBehaviour:
@@ -398,6 +422,20 @@ MonoBehaviour:
   rightArm: {fileID: 6978175609998066511}
   cam: {fileID: 0}
   minimumDistance: 4
+--- !u!114 &2323004612969997786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033642887015657836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9393da8d2ffaa4fac931a64583a25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakers: []
+  delayBetweenBreaks: 2
 --- !u!1 &2170399253664509019
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +601,7 @@ GameObject:
   - component: {fileID: 6591356818625584780}
   - component: {fileID: 6891279138798971394}
   - component: {fileID: 1563727476605866452}
+  - component: {fileID: 6520440636147677654}
   m_Layer: 9
   m_Name: LeftLowerArm
   m_TagString: Untagged
@@ -669,6 +708,20 @@ MonoBehaviour:
   targetRotation: -50
   rb: {fileID: 1299491144256729594}
   force: 1000
+--- !u!114 &6520440636147677654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597888655889715271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 2908729904954811217}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &2755239747164121245
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +869,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0.000000020009594, y: -0.0017910557}
+  m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.6259999, y: 1.9202089}
   m_UseMotor: 0
   m_Motor:
@@ -851,6 +904,7 @@ MonoBehaviour:
     <Balancer>k__BackingField: {fileID: 1563727476605866452}
   constraint: {fileID: 2616991359501933761}
   handGrab: {fileID: 7934513697558265245}
+  armsController: {fileID: 8462268292019057562}
 --- !u!114 &3126704987962346761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,9 +969,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseButton: 324
+  dropItemButton: 0
   grabMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 257
   grabRadius: 0.19
   lowerArmBody: {fileID: 1299491144256729594}
 --- !u!50 &2616991359501933761
@@ -985,6 +1040,7 @@ GameObject:
   - component: {fileID: 4836105836996802858}
   - component: {fileID: 2547256710831457183}
   - component: {fileID: 1268306580814576587}
+  - component: {fileID: 2544106188140130991}
   m_Layer: 9
   m_Name: LeftUpperLeg
   m_TagString: Untagged
@@ -1091,6 +1147,20 @@ MonoBehaviour:
   targetRotation: 0
   rb: {fileID: 6832225198080759391}
   force: 3000
+--- !u!114 &2544106188140130991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619033454255798048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 3619033454255798048}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &3664058367003440861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1474,7 @@ MonoBehaviour:
     <Balancer>k__BackingField: {fileID: 2002216645404660206}
   constraint: {fileID: 2195815604024629943}
   handGrab: {fileID: 3528719445049370684}
+  armsController: {fileID: 8462268292019057562}
 --- !u!114 &3408648234207701096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,6 +1505,7 @@ GameObject:
   - component: {fileID: 6708451515574961473}
   - component: {fileID: 3164021845561678916}
   - component: {fileID: 3814700052871885735}
+  - component: {fileID: 66166735336010327}
   m_Layer: 9
   m_Name: RightDownLeg
   m_TagString: Untagged
@@ -1539,6 +1611,20 @@ MonoBehaviour:
   targetRotation: 0
   rb: {fileID: 8842608741680945575}
   force: 3000
+--- !u!114 &66166735336010327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166178930681327643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 1032058388913588432}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &5302265462329997143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,6 +1638,7 @@ GameObject:
   - component: {fileID: 3726799532207218297}
   - component: {fileID: 5612437419250451145}
   - component: {fileID: 2002216645404660206}
+  - component: {fileID: 2634852098714560431}
   m_Layer: 9
   m_Name: RightLowerArm
   m_TagString: Untagged
@@ -1658,6 +1745,20 @@ MonoBehaviour:
   targetRotation: -50
   rb: {fileID: 4921464695062715353}
   force: 1000
+--- !u!114 &2634852098714560431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302265462329997143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 5095207877048841472}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &5426613061620510648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,9 +1874,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseButton: 323
+  dropItemButton: 0
   grabMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 257
   grabRadius: 0.19
   lowerArmBody: {fileID: 4921464695062715353}
 --- !u!50 &2195815604024629943
@@ -1843,6 +1945,7 @@ GameObject:
   - component: {fileID: 8265695507025263440}
   - component: {fileID: 1370564666966195629}
   - component: {fileID: 1298848223344266646}
+  - component: {fileID: 7909582804536481327}
   m_Layer: 9
   m_Name: LeftDownLeg
   m_TagString: Untagged
@@ -1948,6 +2051,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armsController: {fileID: 8462268292019057562}
+--- !u!114 &7909582804536481327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127438791490028520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ce87a4da4d70449fb89ec8cdd5532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleForDestroy: {fileID: 3619033454255798048}
+  hipsRB: {fileID: 8865484429075957887}
 --- !u!1 &7311259370489595794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,7 +2533,6 @@ GameObject:
   - component: {fileID: 8865484429075957887}
   - component: {fileID: 3318532035946324688}
   - component: {fileID: 3797729342566148813}
-  - component: {fileID: 2306746769465634482}
   m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
@@ -2503,41 +2619,6 @@ MonoBehaviour:
   targetRotation: 0
   rb: {fileID: 8865484429075957887}
   force: 3000
---- !u!70 &2306746769465634482
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8060160771555054205}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.031208515, y: 1.8903514}
-  m_Size: {x: 1.5260878, y: 3.7106926}
-  m_Direction: 0
 --- !u!1 &8475760097502128402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,8 +2629,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8671996418961696998}
   - component: {fileID: 4875146322526951543}
+  - component: {fileID: 905804664740863501}
   m_Layer: 9
-  m_Name: ChestSprite
+  m_Name: BodyModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2622,6 +2704,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &905804664740863501
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475760097502128402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16836715, y: 1.8620894}
+  m_Size: {x: 2.3679519, y: 4.449804}
+  m_Direction: 0
 --- !u!1 &9005234719627489009
 GameObject:
   m_ObjectHideFlags: 0
