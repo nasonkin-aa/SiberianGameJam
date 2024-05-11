@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638510706280730678
+  lastModified: 638510771945621597
   FileSizes:
   - Name: Desktop
     Value: 758
@@ -69,7 +69,7 @@ MonoBehaviour:
   - {fileID: 426382810008132228}
   StringsBanks:
   - {fileID: -8376855045269346144}
-  cacheTime: 638510706280730678
+  cacheTime: 638510771945621597
   cacheVersion: 131617
 --- !u!114 &426382810008132228
 MonoBehaviour:
@@ -86,7 +86,7 @@ MonoBehaviour:
   Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638510706280720707
+  lastModified: 638510771945621597
   FileSizes:
   - Name: Desktop
     Value: 20704
