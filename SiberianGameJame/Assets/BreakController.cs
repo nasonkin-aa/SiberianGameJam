@@ -27,6 +27,16 @@ public class BreakController : MonoBehaviour
         if (isHold)
             return;
 
+        RemovedModule();
+    }
+
+    public void RemovedModule()
+    {
+        if (_isBreakPossible && breakers.Count < 1)
+        {
+            Die();
+            return;
+        }
         if (!_isBreakPossible || breakers.Count < 1)
             return;
 
@@ -46,5 +56,10 @@ public class BreakController : MonoBehaviour
         _isBreakPossible = false;
         yield return new WaitForSeconds(delayBetweenBreaks);
         _isBreakPossible = true;
+    }
+
+    private void Die()
+    {
+
     }
 }

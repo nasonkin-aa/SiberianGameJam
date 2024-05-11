@@ -92,7 +92,6 @@ public class ArmsController : MonoBehaviour
 
         if (oldFlip != _flip)
         {
-            Debug.Log(_flip ? "Flipped left" : "Flipped right");
             (leftArm.MouseButton, rightArm.MouseButton) = (rightArm.MouseButton, leftArm.MouseButton);
             (leftArm.Hand.mouseButton, rightArm.Hand.mouseButton) = (rightArm.Hand.mouseButton, leftArm.Hand.mouseButton);
             var xScale = Mathf.Abs(transform.localScale.x);
