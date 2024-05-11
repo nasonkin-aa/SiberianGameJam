@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ public class BreakController : MonoBehaviour
 {
     public List<ModuleBreak> breakers;
     public int delayBetweenBreaks = 2;
+    public event Action<ModuleBreak> moduleBreak;
     private bool _isBreakPossible = true;
-    // Start is called before the first frame update
     void Start()
     {
         breakers = new List<ModuleBreak>(GetComponentsInChildren<ModuleBreak>());
@@ -19,7 +20,8 @@ public class BreakController : MonoBehaviour
         if (!_isBreakPossible || breakers.Count < 1)
             return;
 
-        var number = Random.Range(0, breakers.Count);
+        var number = UnityEngine.Random.Range(0, breakers.Count);
+        moduleBreak.Invoke(breakers[number]);
         breakers[number].ModuleSetActive(false);
         breakers.Remove(breakers[number]);
         StartCoroutine(TimeOutForBreak());

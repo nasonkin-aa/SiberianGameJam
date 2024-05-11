@@ -28,12 +28,12 @@ public class ModuleBreak : MonoBehaviour
         copy.transform.position = moduleForDestroy.transform.position;
         copy.transform.rotation = moduleForDestroy.transform.rotation;
 
-        copy.GetComponentInChildren<HingeJoint2D>().enabled = state;
         copy.GetComponentsInChildren<HingeJoint2D>().ToList().ForEach(component => component.enabled = state);
         copy.GetComponentsInChildren<Arm>().ToList().ForEach(component => { component.Disable(); component.enabled = state;});
         copy.GetComponentsInChildren<Balance>().ToList().ForEach(component => component.enabled = state);
         copy.GetComponentsInChildren<JointLimitsCorrector>().ToList().ForEach(component => component.enabled = state);
-
+        copy.GetComponentsInChildren<Grab>().ToList().ForEach(component => component.enabled = state);
+        copy.GetComponentsInChildren<FixedJoint2D>().ToList().ForEach(component => component.enabled = state);
 
         moduleForDestroy.SetActive(state);
     }
