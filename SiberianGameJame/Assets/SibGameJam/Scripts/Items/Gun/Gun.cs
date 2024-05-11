@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Gun : Item
@@ -7,17 +6,17 @@ public class Gun : Item
     public GameObject bulletPrefab;
     public Collider2D collider;
 
-    private Vector3 initialLocalScale;
+    private Vector3 _initialLocalScale;
 
     private void Start()
     {
-        initialLocalScale = transform.localScale;
+        _initialLocalScale = transform.localScale;
     }
 
 
-    void Update() 
+    void Update()
     {
-        if (Attached && Input.GetKeyDown(KeyCode.LeftShift)) 
+        if (Attached && Input.GetKeyDown(KeyCode.LeftShift))
         {
             Shoot();
         }
@@ -34,9 +33,13 @@ public class Gun : Item
 
         GetComponent<Rigidbody2D>().simulated = false;
         collider.enabled = false;
-        transform.SetParent(hand, true);
+        transform.SetParent(hand, false);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        transform.localScale = new Vector3(_initialLocalScale.x / Mathf.Abs(hand.lossyScale.x),
+            _initialLocalScale.y / Mathf.Abs(hand.lossyScale.y), _initialLocalScale.z / Mathf.Abs(hand.lossyScale.z));
+
+        Debug.Log(hand.lossyScale);
     }
 
     public override void DetachFromHand()
@@ -44,7 +47,7 @@ public class Gun : Item
         base.DetachFromHand();
         GetComponent<Rigidbody2D>().simulated = true;
         collider.enabled = true;
-        transform.parent = null;
-        transform.localScale = initialLocalScale;
+        transform.SetParent(null, true);
+        transform.localScale = new Vector3(Mathf.Sign(transform.localScale.x) * _initialLocalScale.x, Mathf.Sign(transform.localScale.y) * _initialLocalScale.y, Mathf.Sign(transform.localScale.z) * _initialLocalScale.z);
     }
 }
