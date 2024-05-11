@@ -13,5 +13,34 @@ MonoBehaviour:
   m_Name: Shovel
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: d13fc527e32e02f44adf46e4df451b08, type: 2}
+  - {fileID: 11400000, guid: b450bf297caf86444af0a80fe8390d17, type: 2}
+  - {fileID: 11400000, guid: 16b8e6c5e7a2e0e4b96f39a9154e7a26, type: 2}
+  - {fileID: 11400000, guid: f52b75e1434d8d64d98374de28486552, type: 2}
+  - {fileID: 11400000, guid: 2bdcacd5b733a61418fd4bf6f73f5e6d, type: 2}
+  - {fileID: 11400000, guid: 7c12165bf6d27ff4d8f66a9dc90b4f33, type: 2}
+  - {fileID: 11400000, guid: 25e4a11fe8d90f5479b8353fae0f533a, type: 2}
+  - {fileID: 11400000, guid: 0cce860a980407343aecf5e6e22441e3, type: 2}
+  - {fileID: 11400000, guid: 09b097843ce17284692267088e7c8a1e, type: 2}
+  - {fileID: 11400000, guid: 7fda1679acb82324db3df6cabd4fec60, type: 2}
+  - {fileID: 11400000, guid: 4178bf75aefc88f48a9c4184bf85451f, type: 2}
+  - {fileID: 11400000, guid: a1f4e28b22de9284683fcf0e6a3a6fe6, type: 2}
+  - {fileID: 11400000, guid: db8f1f51e24d9c44b9121c28b4186724, type: 2}
+  - {fileID: 11400000, guid: eecfdc9704e65c54f904eb298866c6ec, type: 2}
+  - {fileID: 11400000, guid: f981f55a58f6e0c4d9d0c18bf0aef20a, type: 2}
+  - {fileID: 11400000, guid: 511995318c690bf4987fdc7381b82a49, type: 2}
+  - {fileID: 11400000, guid: 86e23664784b701439c8f79d71f8a4c0, type: 2}
+  - {fileID: 11400000, guid: 7a0ecf8e341656d41af81d21ebcefba0, type: 2}
+  - {fileID: 11400000, guid: 4aa3c94234d31df4889ecef5c268068a, type: 2}
+  - {fileID: 11400000, guid: 0e795f29a4f272147b6a91dcc360cd95, type: 2}
+  - {fileID: 11400000, guid: 5d127e310ff0e99438d9621be487a83b, type: 2}
+  - {fileID: 11400000, guid: 1de470e7932198741a10967914010708, type: 2}
+  - {fileID: 11400000, guid: d240e4506f0bdea40bef74894efb0190, type: 2}
+  - {fileID: 11400000, guid: eec64deabf4771b4a8744262de69441d, type: 2}
+  - {fileID: 11400000, guid: f50284080fb4eb34da0bdc472e3dbf7a, type: 2}
+  - {fileID: 11400000, guid: 400149bd884502046ae1f03fca9cd908, type: 2}
+  - {fileID: 11400000, guid: 76a5d8fc924a6c748bb086c75bc2007c, type: 2}
+  - {fileID: 11400000, guid: 86ba4d0fc7f37b64a804e21841935a07, type: 2}
+  - {fileID: 11400000, guid: 2a922b9a6c237c44e96bc3b53147d08d, type: 2}
+  - {fileID: 11400000, guid: b73bdbf71855a5242bdfad7d763f2ecf, type: 2}
+  - {fileID: 11400000, guid: ddee25653115cbf4d9973fc5d2e30143, type: 2}
   CanDestroy: {fileID: 8703509535638006033, guid: 6e3c9ea6a3959c6429a52f73b34ed74a, type: 3}

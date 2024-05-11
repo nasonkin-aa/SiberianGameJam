@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
     public int strength = 3;
     
     protected Transform Hand;
-    protected bool Attached = false;
+    public bool Attached = false;
 
     public virtual void AttachToHand(Transform hand)
     {
