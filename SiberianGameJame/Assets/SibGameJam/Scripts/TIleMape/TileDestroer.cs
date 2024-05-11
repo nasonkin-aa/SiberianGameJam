@@ -38,6 +38,7 @@ public class TileDestroer : MonoBehaviour
                     {
                         Destroy(gameObject);
                     }
+                    AudioManager.instance.PlaySoundDig();
                     Debug.Log($"Tile removed at position {position}");
                 }
             }
