@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 0; // ������������� z ����������, ����� ��������������� ��������� ������
+            mousePosition.z = 0;
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             transform.position = worldPosition;
         }
@@ -97,5 +97,31 @@ public class PlayerController : MonoBehaviour
                 }
             });
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ReturnPart(PartName.Parts.LeftHand, Color.red);
+        }
+    }
+
+    public void ReturnPart (PartName.Parts part, Color color)
+    {
+        GameObject correctPart = null;
+        foreach (var el in moduls)
+        {
+            if (el.GetComponent<PartName>().name == part)
+            {
+                if (el.active)
+                    return;
+                correctPart = el;
+            }
+        }
+        if (correctPart == null)
+            return;
+
+        correctPart.SetActive(true);
+        var sprites = correctPart.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sprite in sprites)
+            sprite.color = color;
     }
 }
