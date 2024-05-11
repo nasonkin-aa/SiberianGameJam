@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BreakController : MonoBehaviour
 {
@@ -17,6 +18,15 @@ public class BreakController : MonoBehaviour
 
     void OnModuleBreak()
     {
+        List<Arm> arms = GetComponentsInChildren<Arm>().ToList();
+        
+        bool isHold = false;
+        if (arms.Count > 0)
+            foreach (var arm in arms)
+                isHold |= arm.ArmState == ArmState.Holding;
+        if (isHold)
+            return;
+
         if (!_isBreakPossible || breakers.Count < 1)
             return;
 

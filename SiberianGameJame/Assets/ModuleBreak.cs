@@ -5,7 +5,8 @@ using System.Linq;
 public class ModuleBreak : MonoBehaviour
 {
     public GameObject moduleForDestroy;
-    public int speedLimitForBreak = 15;
+    public static int speedLimitForBreak = 15;
+    public Rigidbody2D hipsRB;
     private Rigidbody2D _rb;
     private int prevSpeed;
     public event Action moduleBreak;
@@ -40,6 +41,7 @@ public class ModuleBreak : MonoBehaviour
 
     public void Update()
     {
-        prevSpeed = (int)_rb.velocity.magnitude;
+        prevSpeed = (int)hipsRB.velocity.magnitude;
+        Debug.Log(speedLimitForBreak);
     }
 }

@@ -14,11 +14,11 @@ public class Balance : MonoBehaviour
     
     public bool Active { get => active; set => active = value; }
 
-    private float _targetRotation;
+    private bool _flip;
+    private float TargetRotation => _flip ? -targetRotation : targetRotation; 
     
     private void Start()
     {
-        _targetRotation = targetRotation;
         if (armsController)
         {
             armsController.Flipped += OnFlipped;
@@ -27,13 +27,13 @@ public class Balance : MonoBehaviour
 
     private void OnFlipped(bool flip)
     {
-        _targetRotation = flip ? -targetRotation : targetRotation;
+        _flip = flip;
     }
 
     public void FixedUpdate()
     {
         if (!active) return;
-        rb.MoveRotation(Mathf.MoveTowardsAngle(rb.rotation, _targetRotation, force * Time.fixedDeltaTime));
+        rb.MoveRotation(Mathf.MoveTowardsAngle(rb.rotation, TargetRotation, force * Time.fixedDeltaTime));
     }
 
     private void OnJointBreak2D(Joint2D brokenJoint)

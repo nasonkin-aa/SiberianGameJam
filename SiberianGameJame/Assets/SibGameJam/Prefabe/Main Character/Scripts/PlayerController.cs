@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public BreakController breakContriller;
     
     [SerializeField]
+    private ArmsController armsController;
+    
+    [SerializeField]
     private Balance bodyBalance;
 
     private bool isOnGround;
@@ -47,18 +50,20 @@ public class PlayerController : MonoBehaviour
 
         
         isOnGround = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
-        
-        if(Input.GetAxisRaw("Horizontal") != 0)
+
+        var inputRawAxis = Input.GetAxisRaw("Horizontal");
+        if(inputRawAxis != 0)
         {
-            if(Input.GetAxisRaw("Horizontal") > 0)
+            if (Mathf.Abs(rb.velocity.x) < 10)
+                rb.AddForce(new Vector2(Mathf.Sign(inputRawAxis), 0.5f) * playerSpeed * Time.deltaTime);
+            
+            if(inputRawAxis > 0 && !armsController.Flip || inputRawAxis < 0 && armsController.Flip)
             {
                 anim.Play("Walk");
-                rb.AddForce(Vector2.right * playerSpeed * Time.deltaTime);
             }
             else
             {
                 anim.Play("WalkBack");
-                rb.AddForce(Vector2.left * playerSpeed * Time.deltaTime);
             }
         }
         else
@@ -67,7 +72,7 @@ public class PlayerController : MonoBehaviour
             anim.Play("Idle");
         }
 
-        if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
+        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("JUMPING");
             rb.AddForce(Vector2.up * jumpForce * Time.deltaTime);
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             moduls.ForEach(module =>
             {
-                if (!module.active)
+                if (!module.activeSelf)
                 {
                     module.SetActive(true);
                     breaks.Add(module.GetComponentInChildren<ModuleBreak>());

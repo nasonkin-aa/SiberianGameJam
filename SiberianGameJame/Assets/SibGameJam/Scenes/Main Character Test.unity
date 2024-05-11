@@ -916,6 +916,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
+      propertyPath: armsController
+      value: 
+      objectReference: {fileID: 2101377555}
+    - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
+      propertyPath: breakContriller
+      value: 
+      objectReference: {fileID: 2101377560}
+    - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
       propertyPath: moduls.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1225,7 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 925375945}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &986515697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 180197853}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &1228008046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,6 +1486,11 @@ Transform:
 --- !u!4 &1374233462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5526572726007304298, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
+  m_PrefabInstance: {fileID: 718381024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1374233465 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8865484429075957887, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
   m_PrefabInstance: {fileID: 718381024}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489221947
@@ -1586,7 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 1688036994}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &1755229035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5166178930681327643, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
@@ -1605,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 1688036994}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &2028676887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127438791490028520, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
@@ -1624,7 +1637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 925375945}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &2044188356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,7 +1814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleForDestroy: {fileID: 349195177}
-  speedLimitForBreak: 15
+  hipsRB: {fileID: 1374233465}
 --- !u!1 &2101377554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2033642887015657836, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
