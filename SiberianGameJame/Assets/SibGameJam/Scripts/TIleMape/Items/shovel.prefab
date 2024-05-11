@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8703509535638006033}
   m_Layer: 0
   m_Name: shovel
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.50666666, y: 1.6366667}
+    oldSize: {x: 1.0133333, y: 3.2733333}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -187,4 +187,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b418088df0c214f8b9abf17ca81192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 3
+  strength: 10
+  Attached: 0

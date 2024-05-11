@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
+  Attached: 0
   speed: 5
   rb: {fileID: 3372723915552502513}
 --- !u!50 &3372723915552502513

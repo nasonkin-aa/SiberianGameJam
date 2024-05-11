@@ -30,7 +30,8 @@ public class TileDestroer : MonoBehaviour
                 Item itemComponent = gameObject.GetComponent<Item>();
                 Debug.Log(tile.CanDestroy + " tiele");
                 Debug.Log( itemComponent.GetType().Name +" obj");
-                if (tile.CanDestroy.GetType().Name == itemComponent.GetType().Name && tile.tiles.Contains(map.GetTile(position)))
+                if (tile.CanDestroy.GetType().Name == itemComponent.GetType().Name 
+                    && tile.tiles.Contains(map.GetTile(position)) && gameObject.GetComponent<Item>().Attached)
                 {
                     map.SetTile(position, null);
                     gameObject.GetComponent<Item>().strength--;
@@ -52,8 +53,8 @@ public class TileDestroer : MonoBehaviour
 
         foreach (ContactPoint2D hit in collision.contacts)
         {
-            hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
-            hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
+            hitPosition.x = hit.point.x - 0.1f * hit.normal.x;
+            hitPosition.y = hit.point.y - 0.1f * hit.normal.y;
             Vector3Int cellPosition = map.WorldToCell(hitPosition);
             tilePositions.Add(cellPosition);
         }
