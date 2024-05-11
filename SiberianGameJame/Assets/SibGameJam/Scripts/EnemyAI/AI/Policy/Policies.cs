@@ -8,17 +8,17 @@ namespace EnemyAI
         
         private class RunForeverPolicy : IPolicy 
         {
-            public bool ShouldReturn(Node.Status status) => false;
+            public bool ShouldReturn(Status status) => false;
         }
         
         private class RunUntilSuccessPolicy : IPolicy 
         {
-            public bool ShouldReturn(Node.Status status) => status == Node.Status.Success;
+            public bool ShouldReturn(Status status) => status == Status.Success;
         }
 
         private class RunUntilFailurePolicy : IPolicy 
         {
-            public bool ShouldReturn(Node.Status status) => status == Node.Status.Failure;
+            public bool ShouldReturn(Status status) => status == Status.Failure;
         }
     }
 }

@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour, ITargetable
     private void Update()
     {
         Moveable?.Move();
-        Jumpable?.HandleLogic();
+        Jumpable?.Handle();
     }
 
     public Vector3 Position => transform.position;
