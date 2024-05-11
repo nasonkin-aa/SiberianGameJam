@@ -5,8 +5,8 @@ public interface IDamageable
     bool CanTakeDamage { get; }
     bool CanHeal { get; }
 
-    void TakeDamage(float amount, ITargetable source = null);
-    void Heal(float amount, ITargetable source = null);
+    void TakeDamage(float amount, ITargetable source);
+    void Heal(float amount, ITargetable source);
 
     bool TryTakeDamage(float amount, ITargetable source = null)
     {
