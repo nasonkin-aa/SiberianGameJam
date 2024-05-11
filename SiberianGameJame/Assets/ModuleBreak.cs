@@ -28,6 +28,7 @@ public class ModuleBreak : MonoBehaviour
 
         copy.transform.position = moduleForDestroy.transform.position;
         copy.transform.rotation = moduleForDestroy.transform.rotation;
+        copy.transform.localScale = moduleForDestroy.transform.localScale;
 
         copy.GetComponentsInChildren<HingeJoint2D>().ToList().ForEach(component => component.enabled = state);
         copy.GetComponentsInChildren<Arm>().ToList().ForEach(component => { component.Disable(); component.enabled = state;});
@@ -42,6 +43,5 @@ public class ModuleBreak : MonoBehaviour
     public void Update()
     {
         prevSpeed = (int)hipsRB.velocity.magnitude;
-        Debug.Log(speedLimitForBreak);
     }
 }
