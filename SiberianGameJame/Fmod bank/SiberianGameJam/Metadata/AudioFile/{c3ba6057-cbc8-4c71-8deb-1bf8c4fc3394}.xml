@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c3ba6057-cbc8-4c71-8deb-1bf8c4fc3394}">
+		<property name="assetPath">
+			<value>diging-dirt-01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.14510204081632652</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b017bce5-ed7c-4a13-907e-b7a43d8c0a59}</destination>
+		</relationship>
+	</object>
+</objects>
