@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6323782300245825058
+--- !u!114 &-8549703351582995047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Fmod bank/SiberianGameJam/Build/Desktop/Master.strings.bank
+  Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638510413539615096
+  lastModified: 638510530001420722
   FileSizes:
   - Name: Desktop
     Value: 758
@@ -33,16 +33,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -6323782300245825058}
-  - {fileID: 4945425160610410456}
+  - {fileID: -8549703351582995047}
+  - {fileID: 7276415621745165182}
   EditorEvents:
   - {fileID: 1662597417667921734}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4945425160610410456}
+  - {fileID: 7276415621745165182}
   StringsBanks:
-  - {fileID: -6323782300245825058}
-  cacheTime: 638510413539615096
+  - {fileID: -8549703351582995047}
+  cacheTime: 638510530001420722
   cacheVersion: 131617
 --- !u!114 &1662597417667921734
 MonoBehaviour:
@@ -63,7 +63,7 @@ MonoBehaviour:
     Data3: 1105350532
     Data4: 1031622299
   Banks:
-  - {fileID: 4945425160610410456}
+  - {fileID: 7276415621745165182}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -71,7 +71,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &4945425160610410456
+--- !u!114 &7276415621745165182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,10 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Fmod bank/SiberianGameJam/Build/Desktop/Master.bank
+  Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638510413539458879
+  lastModified: 638510530001400786
   FileSizes:
   - Name: Desktop
     Value: 20704
