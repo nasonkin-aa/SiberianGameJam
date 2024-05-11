@@ -27,7 +27,7 @@ public class PositionInTilemap : MonoBehaviour
             map.SetColor(gridPosition, Color.red);
             map.SetTile(gridPosition, null);
             Debug.Log(gridPosition);
-            AudioManager.instance.PlaySoundDig();
+            //AudioManager.instance.PlaySoundDig();
         }
     }
 }
