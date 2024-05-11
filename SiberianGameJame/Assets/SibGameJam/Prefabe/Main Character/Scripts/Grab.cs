@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Grab : MonoBehaviour
@@ -30,6 +31,9 @@ public class Grab : MonoBehaviour
     private bool _isHoldItem;
     private Item _attachedItem;
 
+    public event Action<Item> ItemAttached;
+    public event Action<Item> ItemDetached;
+
     private void Update()
     {
         if (_isHoldItem)
@@ -38,7 +42,10 @@ public class Grab : MonoBehaviour
             {
                 _isHoldItem = false;
                 if (_attachedItem)
+                {
                     _attachedItem.DetachFromHand();
+                    ItemDetached?.Invoke(_attachedItem);
+                }
                 Detach();
             }
 
@@ -96,6 +103,7 @@ public class Grab : MonoBehaviour
                         {
                             item.AttachToHand(itemPivot);
                             _attachedItem = item;
+                            ItemAttached?.Invoke(_attachedItem);
                         }
                     }
                 }
