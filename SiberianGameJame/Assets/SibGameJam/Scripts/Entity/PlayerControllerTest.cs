@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Entity))]
-public class PlayerController : MonoBehaviour
+public class PlayerControllerTest : MonoBehaviour
 {
     private Entity _entity;
 
