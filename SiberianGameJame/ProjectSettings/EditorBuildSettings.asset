@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SibGameJam/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/SibGameJam/Scenes/Main Menu.unity
+    guid: febc8a1f5fcf67440b43d1af2e8fb9c4
+  - enabled: 1
+    path: Assets/SibGameJam/Scenes/Max.unity
+    guid: 183315d7f6da395439694cd89c39a71d
   m_configObjects: {}
