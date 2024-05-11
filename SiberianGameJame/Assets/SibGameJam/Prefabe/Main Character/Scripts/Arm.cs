@@ -90,9 +90,21 @@ public class Arm : MonoBehaviour
 
     private void Update()
     {
-        if (handGrab.Grabbed)
+        if (handGrab.Hold)
         {
             ArmState = ArmState.Holding;
+            if (Input.GetMouseButton(mouseButton))
+            {
+                ArmState = ArmState.Moving;
+            }
+            else
+            {
+                ArmState = ArmState.Idle;
+            }
+        }
+        else if (handGrab.Grabbed)
+        {
+            ArmState = ArmState.Grabbed;
         }
         else if (Input.GetMouseButton(mouseButton))
         {
@@ -125,38 +137,8 @@ public class Arm : MonoBehaviour
 
     private void MoveJoints()
     {
-        // if (ArmState == ArmState.Holding)
-        // {
-        //     var currentAngle = NormalizeAngle(upperArm.Body.rotation - body.rotation);
-        //     var angleDifference = NormalizeAngle(body.rotation + _upperArmTargetAngle - currentAngle);
-        //     var torque = Mathf.Clamp(angleDifference * torqueForce, -maxTorqueForce, maxTorqueForce);
-        //
-        //     // Применяем вращающий момент к upperArm
-        //     upperArm.Body.AddTorque(torque, ForceMode2D.Force);
-        // }
-        // else
-        // {
-        //     
-        // }
-
-        // upperArm.Body.MoveRotation(Mathf.LerpAngle(upperArm.Body.rotation, body.rotation + _upperArmTargetAngle,
-        //     moveSpeed * Time.fixedDeltaTime));
-        
         upperArm.Body.MoveRotation(body.rotation + _upperArmTargetAngle);
         lowerArm.Body.MoveRotation(upperArm.Body.rotation + _lowerArmTargetAngle);
-
-        // lowerArm.Body.MoveRotation(Mathf.LerpAngle(lowerArm.Body.rotation, upperArm.Body.rotation + _lowerArmTargetAngle,
-        //     moveSpeed * Time.fixedDeltaTime));
-    }
-
-    private float NormalizeAngle(float angle)
-    {
-        angle %= 360;
-        if (angle > 180)
-            angle -= 360;
-        else if (angle <= -180)
-            angle += 360;
-        return angle;
     }
 
     // Inverse Kinematic
@@ -245,5 +227,6 @@ public enum ArmState
 {
     Idle,
     Moving,
-    Holding
+    Holding,
+    Grabbed
 }

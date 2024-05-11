@@ -78,7 +78,7 @@ public class ArmsController : MonoBehaviour
 
         if (!(Mathf.Abs(distance) > minimumDistance)) return;
 
-        if (leftArm.Hand.Grabbed || rightArm.Hand.Grabbed) return;
+        if (leftArm.Hand.Grabbed && !leftArm.Hand.Hold || rightArm.Hand.Grabbed && !rightArm.Hand.Hold) return;
 
         var oldFlip = _flip;
         if (!_flip && distance > 0)

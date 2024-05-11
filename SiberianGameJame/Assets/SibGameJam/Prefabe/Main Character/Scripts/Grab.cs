@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Grab : MonoBehaviour
@@ -12,11 +11,15 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private float grabRadius = 0.1f;
 
+    [SerializeField]
+    private Transform itemPivot;
+
     private bool _hold;
     private readonly Collider2D[] _hits = new Collider2D[1];
     private Collider2D _target;
 
     public bool Grabbed => _target != null;
+    public bool Hold => _isHoldItem;
 
     private float _holdDelay = 0.2f;
     private float _holdTimer;
@@ -24,8 +27,24 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Rigidbody2D lowerArmBody;
 
+    private bool _isHoldItem;
+    private Item _attachedItem;
+
     private void Update()
     {
+        if (_isHoldItem)
+        {
+            if (Input.GetKeyDown(dropItemButton))
+            {
+                _isHoldItem = false;
+                if (_attachedItem)
+                    _attachedItem.DetachFromHand();
+                Detach();
+            }
+
+            return;
+        }
+
         if (Input.GetKeyDown(mouseButton))
         {
             _holdTimer = 0;
@@ -40,13 +59,19 @@ public class Grab : MonoBehaviour
         }
         else
         {
-            _hold = false;
-            _target = null;
-            Destroy(GetComponent<FixedJoint2D>());
-            
-            if (lowerArmBody)
-                lowerArmBody.mass = 1;
+            Detach();
         }
+    }
+
+    private void Detach()
+    {
+        _holdTimer = 0;
+        _hold = false;
+        _target = null;
+        Destroy(GetComponent<FixedJoint2D>());
+
+        if (lowerArmBody)
+            lowerArmBody.mass = 1;
     }
 
     private void FixedUpdate()
@@ -62,6 +87,17 @@ public class Grab : MonoBehaviour
                 {
                     var fj = transform.gameObject.AddComponent<FixedJoint2D>();
                     fj.connectedBody = rb;
+
+                    if (rb.CompareTag("Item"))
+                    {
+                        _isHoldItem = true;
+                        var item = rb.GetComponent<Item>();
+                        if (item)
+                        {
+                            item.AttachToHand(itemPivot);
+                            _attachedItem = item;
+                        }
+                    }
                 }
                 else
                 {
@@ -71,11 +107,6 @@ public class Grab : MonoBehaviour
                 }
             }
         }
-    }
-    
-    private void HandleGrab()
-    {
-        
     }
 
     private void OnDrawGizmosSelected()
