@@ -1,16 +1,15 @@
 public interface IJumpable
 {
-    public float JumpHeight { get; }
-    
     bool CanJump { get; }
-    
     void Jump();
-
-    bool TryJump()
+ 
+    bool TryJump(int amount = 1)
     {
-        if (CanJump) Jump();
+        if (CanJump)
+            Jump();
+        
         return CanJump;
     }
-
-    void HandleLogic();
+    
+    void Handle();
 }
