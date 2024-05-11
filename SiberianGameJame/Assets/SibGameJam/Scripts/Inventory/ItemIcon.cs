@@ -21,9 +21,9 @@ public class ItemIcon : MonoBehaviour
         {
             ItemFormFactor = new string[] { "1" };
         }
-
         transform.GetComponent<Image>().raycastTarget = false;
     }
+
 
     public void SetOriginPosition(Vector2Int originPos)
     {
@@ -60,6 +60,11 @@ public class ItemIcon : MonoBehaviour
     public void SetParent(Transform transform)
     {
         this.transform.SetParent(transform);
+    }
+
+    private void setStartPos ()
+    {
+
     }
 
     /*void TransposeForm()

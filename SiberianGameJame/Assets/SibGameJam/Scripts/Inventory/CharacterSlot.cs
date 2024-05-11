@@ -4,16 +4,22 @@ public class CharacterSlot : MonoBehaviour
 {
     [SerializeField] UIController controller;
 
-    RectTransform rectTransform;
+    public ItemIcon storedItem;
 
-    ItemIcon storedItem;
+    public InventoryHUD hud;
 
-    public void EquipItem(ItemPickupable item)
+    public void Awake()
+    {
+        hud.Opened += SetStartPos;
+    }
+    public void EquipItem(ItemIcon item)
     {
         if (storedItem != null) return;
 
-        ItemIcon equipedItem = GameObject.Instantiate(item.GetInventoryIcon(), this.transform);
+        ItemIcon equipedItem = Instantiate(item, transform);
         PlaceItem(equipedItem);
+
+        DrawItem();
     }
 
     public void PlaceItem(ItemIcon item)
@@ -70,6 +76,12 @@ public class CharacterSlot : MonoBehaviour
     public void DeactivateSlot()
     {
         controller.SetActiveSlot();
+    }
+
+    public void SetStartPos()
+    {
+        if (storedItem != null)
+            storedItem.transform.localPosition = new Vector3(0, 0, 0);
     }
 
 }

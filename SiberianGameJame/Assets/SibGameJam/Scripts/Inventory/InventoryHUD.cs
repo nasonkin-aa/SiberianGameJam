@@ -7,6 +7,10 @@ public class InventoryHUD : MonoBehaviour
     public event Action Opened;
     public event Action Closeed;
 
+    public void Start()
+    {
+        gameObject.SetActive(false);
+    }
     public void OpenInventory()
     {
         gameObject.SetActive(true);
