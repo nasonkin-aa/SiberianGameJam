@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 677243992}
   - component: {fileID: 677243991}
   - component: {fileID: 677243990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27767,6 +27767,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.08830494
       objectReference: {fileID: 0}
+    - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 70348258}
     - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
       propertyPath: ground.m_Bits
       value: 256
