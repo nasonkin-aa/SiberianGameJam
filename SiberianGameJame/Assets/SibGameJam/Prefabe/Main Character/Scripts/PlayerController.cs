@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,18 +10,22 @@ public class PlayerController : MonoBehaviour
     public float positionRadius;
     public LayerMask ground;
     public Transform playerPos;
+    public Camera mainCamera;
+    public List<GameObject> moduls;
+    public BreakController breakContriller;
     
     [SerializeField]
     private Balance bodyBalance;
 
     private bool isOnGround;
+    private List<ModuleBreak> breaks => breakContriller.breakers;
 
     void Start()
     {
-        
+        breakContriller = GetComponent<BreakController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
                 balance.Active = true;
             }
         }
+
         
         isOnGround = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
         
@@ -67,5 +73,24 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce * Time.deltaTime);
         }
 
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = 0; // ������������� z ����������, ����� ��������������� ��������� ������
+            Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            transform.position = worldPosition;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            moduls.ForEach(module =>
+            {
+                if (!module.active)
+                {
+                    module.SetActive(true);
+                    breaks.Add(module.GetComponentInChildren<ModuleBreak>());
+                }
+            });
+        }
     }
 }
