@@ -30,6 +30,9 @@ public class Arm : MonoBehaviour
     [SerializeField]
     private Grab handGrab;
 
+    [SerializeField]
+    private ArmsController armsController;
+
     public Grab Hand => handGrab;
 
     private ArmState _armState;
@@ -77,8 +80,10 @@ public class Arm : MonoBehaviour
 
     private Vector2 _lastCursorPosition;
 
+
     private void Start()
     {
+        armsController.Flipped += Fliper;
         _upperArmLength = Vector3.Distance(upperArm.Transform.position, lowerArm.Transform.position);
         _lowerArmLength = Vector3.Distance(lowerArm.Transform.position, constraint.transform.position);
     }
@@ -211,6 +216,16 @@ public class Arm : MonoBehaviour
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(lowerArm.Body.position, 0.1f);
         }
+    }
+
+    private void Fliper (bool flip)
+    {
+        Flip = flip;
+    }
+
+    public void Disable()
+    {
+        armsController.Flipped -= Fliper;
     }
 }
 
