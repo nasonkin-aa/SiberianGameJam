@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4a2bcf4a-37ec-42f1-8394-38f8c7bf0f3f}">
+		<property name="assetPath">
+			<value>robot sound.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b017bce5-ed7c-4a13-907e-b7a43d8c0a59}</destination>
+		</relationship>
+	</object>
+</objects>
