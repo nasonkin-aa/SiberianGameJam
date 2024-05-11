@@ -8,5 +8,5 @@ public class TileData : ScriptableObject
 {
     public TileBase[] tiles;
 
-    public GameObject CanDestroy;
+    public Item CanDestroy;
 }

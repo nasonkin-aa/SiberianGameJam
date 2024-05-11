@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,12 @@ public class TileDestroer : MonoBehaviour
 
     private int strength = 3;
     public List<TileData> TileDatas = new();
-    
+
+    private void Awake()
+    {
+        map = GameObject.FindObjectOfType<Tilemap>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         List<Vector3Int> positions = GetTilePositionsFromCollision(collision);
@@ -21,11 +27,14 @@ public class TileDestroer : MonoBehaviour
             if (!map.HasTile(position)) continue;
             foreach (var tile in TileDatas)
             { 
-                if (tile.CanDestroy.name == gameObject.name && tile.tiles.Contains(map.GetTile(position)))
+                Item itemComponent = gameObject.GetComponent<Item>();
+                Debug.Log(tile.CanDestroy + " tiele");
+                Debug.Log( itemComponent.GetType().Name +" obj");
+                if (tile.CanDestroy.GetType().Name == itemComponent.GetType().Name && tile.tiles.Contains(map.GetTile(position)))
                 {
                     map.SetTile(position, null);
-                    strength--;
-                    if ( strength <= 0)
+                    gameObject.GetComponent<Item>().strength--;
+                    if ( gameObject.GetComponent<Item>().strength <= 0)
                     {
                         Destroy(gameObject);
                     }
@@ -49,4 +58,6 @@ public class TileDestroer : MonoBehaviour
         }
         return tilePositions;
     }
+   
+
 }
