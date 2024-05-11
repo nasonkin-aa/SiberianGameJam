@@ -99,6 +99,11 @@ public class PlayerController : MonoBehaviour
             });
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ReturnPart(PartName.Parts.LeftHand, Color.red);
+        }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (inventory.GetStatus())
