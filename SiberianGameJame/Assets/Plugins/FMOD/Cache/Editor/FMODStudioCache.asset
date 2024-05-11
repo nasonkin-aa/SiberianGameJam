@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638510706280730678
+  lastModified: 638510757151914598
   FileSizes:
   - Name: Desktop
-    Value: 758
+    Value: 1052
   Exists: 1
 --- !u!114 &-5599358704557650161
 MonoBehaviour:
@@ -47,6 +47,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3184780003131529794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MetallicSound
+  m_EditorClassIdentifier: 
+  Path: event:/MetallicSound
+  Guid:
+    Data1: 1423978799
+    Data2: 1340739211
+    Data3: -840841056
+    Data4: -1290032830
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2687634524882784999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Stone DIG
+  m_EditorClassIdentifier: 
+  Path: event:/Stone DIG
+  Guid:
+    Data1: 132845655
+    Data2: 1173043125
+    Data3: 1809407925
+    Data4: -1243295370
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-837540883058335097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Robot
+  m_EditorClassIdentifier: 
+  Path: event:/Robot
+  Guid:
+    Data1: -990777297
+    Data2: 1217240722
+    Data3: 1643127946
+    Data4: -718931959
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,13 +145,47 @@ MonoBehaviour:
   - {fileID: 426382810008132228}
   EditorEvents:
   - {fileID: -5599358704557650161}
+  - {fileID: 5880215824293778107}
+  - {fileID: -3184780003131529794}
+  - {fileID: -837540883058335097}
+  - {fileID: -2687634524882784999}
+  - {fileID: 7002883662612441226}
+  - {fileID: 3183516157910226830}
+  - {fileID: 21934980388675574}
   EditorParameters: []
   MasterBanks:
   - {fileID: 426382810008132228}
   StringsBanks:
   - {fileID: -8376855045269346144}
-  cacheTime: 638510706280730678
+  cacheTime: 638510757151914598
   cacheVersion: 131617
+--- !u!114 &21934980388675574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PlasmaGun
+  m_EditorClassIdentifier: 
+  Path: event:/PlasmaGun
+  Guid:
+    Data1: 71372543
+    Data2: 1312682171
+    Data3: 1406279334
+    Data4: -901108987
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &426382810008132228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +201,89 @@ MonoBehaviour:
   Path: Fmod bank/SiberianGameJam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638510706280720707
+  lastModified: 638510757151864450
   FileSizes:
   - Name: Desktop
-    Value: 20704
+    Value: 7407712
   Exists: 1
+--- !u!114 &3183516157910226830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Grab
+  m_EditorClassIdentifier: 
+  Path: event:/Grab
+  Guid:
+    Data1: -1649318458
+    Data2: 1328669208
+    Data3: 1810157456
+    Data4: 59430005
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5880215824293778107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MonsterWalk
+  m_EditorClassIdentifier: 
+  Path: event:/MonsterWalk
+  Guid:
+    Data1: 1195981319
+    Data2: 1331101606
+    Data3: 2143242938
+    Data4: -1282029734
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7002883662612441226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music
+  Guid:
+    Data1: 400117161
+    Data2: 1220157452
+    Data3: 419687858
+    Data4: -1506015142
+  Banks:
+  - {fileID: 426382810008132228}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 963361

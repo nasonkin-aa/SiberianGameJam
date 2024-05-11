@@ -20,15 +20,18 @@ public class Grab : MonoBehaviour
     private bool _hold;
     private readonly Collider2D[] _hits = new Collider2D[1];
     private Collider2D _target;
-
+    private Item _attachedItem;
+    private bool _isHoldItem;
     public bool Grabbed => _target != null;
     public bool Hold => _isHoldItem;
+    
 
     private float _holdDelay = 0.2f;
     private float _holdTimer;
 
     [SerializeField]
     private Rigidbody2D lowerArmBody;
+    
 
     [SerializeField] CharacterSlot characterSlotR;
     [SerializeField] CharacterSlot characterSlotL;
@@ -43,7 +46,6 @@ public class Grab : MonoBehaviour
                 if (_attachedItem)
                 {
                     _attachedItem.DetachFromHand();
-                    ItemDetached?.Invoke(_attachedItem);
                 }
                 Detach();
             }
@@ -108,7 +110,6 @@ public class Grab : MonoBehaviour
                         {
                             item.AttachToHand(itemPivot);
                             _attachedItem = item;
-                            ItemAttached?.Invoke(_attachedItem);
                         }
                     }
                 }
