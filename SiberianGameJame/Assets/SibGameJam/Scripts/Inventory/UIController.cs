@@ -14,6 +14,11 @@ public class UIController : MonoBehaviour
         if (liftedItem != null)
         {
             liftedItem.MoveItem(Input.mousePosition);
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                liftedItem.RotateDirection();
+            }
         }
 
         if (activeGrid == null && activeSlot == null) { return; }
