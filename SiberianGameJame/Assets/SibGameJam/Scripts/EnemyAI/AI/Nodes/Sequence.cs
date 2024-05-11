@@ -21,7 +21,7 @@ namespace EnemyAI
                     return Status.Failure;
                 default:
                     ChildIndex++;
-                    return ChildIndex == Children.Count ? Status.Success : Status.Running;
+                    return Status.Running;
             }
         }
     }

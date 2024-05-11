@@ -5,9 +5,7 @@ namespace EnemyAI
     public abstract class Node
     {
         private const string DefaultName = "UnnamedNode";
-        
-        public enum Status { Success, Failure, Running }
-        
+
         public readonly string Name;
         public readonly int Priority;
         

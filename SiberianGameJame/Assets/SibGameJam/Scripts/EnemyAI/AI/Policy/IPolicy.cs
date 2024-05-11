@@ -2,6 +2,6 @@ namespace EnemyAI
 {
     public interface IPolicy 
     {
-        bool ShouldReturn(Node.Status status);
+        bool ShouldReturn(Status status);
     }
 }

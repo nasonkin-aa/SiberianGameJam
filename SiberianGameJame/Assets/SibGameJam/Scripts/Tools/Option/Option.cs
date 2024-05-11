@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 
 [System.Serializable]
-public struct Option<T> where T : class
+public struct Option<T>
 {
     [SerializeField] private bool hasValue;
     [SerializeField] private T value;
@@ -15,6 +16,12 @@ public struct Option<T> where T : class
         this.value = value;
     }
 
+    public bool IsSome(out T some)
+    {
+        some = Value;
+        return HasValue;
+    }
+    
     public static Option<T> None => new(default);
     public static Option<T> Some(T value) => new(value);
 
