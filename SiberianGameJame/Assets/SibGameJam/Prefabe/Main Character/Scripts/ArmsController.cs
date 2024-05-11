@@ -16,6 +16,9 @@ public class ArmsController : MonoBehaviour
     private float minimumDistance = 2f;
 
     private bool _flip;
+
+    public bool Flip => _flip;
+
     public event Action<bool> Flipped;
 
     private void Awake()

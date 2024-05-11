@@ -4,6 +4,7 @@ using UnityEngine;
 public class Grab : MonoBehaviour
 {
     public KeyCode mouseButton;
+    public KeyCode dropItemButton;
 
     [SerializeField]
     private LayerMask grabMask;
@@ -42,7 +43,9 @@ public class Grab : MonoBehaviour
             _hold = false;
             _target = null;
             Destroy(GetComponent<FixedJoint2D>());
-            lowerArmBody.mass = 1;
+            
+            if (lowerArmBody)
+                lowerArmBody.mass = 1;
         }
     }
 
@@ -53,9 +56,8 @@ public class Grab : MonoBehaviour
             var count = Physics2D.OverlapCircleNonAlloc(transform.position, grabRadius, _hits, grabMask);
             if (count > 0 && _target != _hits[0])
             {
-                lowerArmBody.mass = 10f;
                 _target = _hits[0];
-                var rb = _target.GetComponent<Rigidbody2D>();
+                var rb = _target.GetComponentInParent<Rigidbody2D>();
                 if (rb != null)
                 {
                     var fj = transform.gameObject.AddComponent<FixedJoint2D>();
@@ -63,10 +65,17 @@ public class Grab : MonoBehaviour
                 }
                 else
                 {
+                    if (lowerArmBody)
+                        lowerArmBody.mass = 10f;
                     var fj = transform.gameObject.AddComponent<FixedJoint2D>();
                 }
             }
         }
+    }
+    
+    private void HandleGrab()
+    {
+        
     }
 
     private void OnDrawGizmosSelected()

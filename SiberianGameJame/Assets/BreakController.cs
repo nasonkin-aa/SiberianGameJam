@@ -21,7 +21,7 @@ public class BreakController : MonoBehaviour
             return;
 
         var number = UnityEngine.Random.Range(0, breakers.Count);
-        moduleBreak.Invoke(breakers[number]);
+        moduleBreak?.Invoke(breakers[number]);
         breakers[number].ModuleSetActive(false);
         breakers.Remove(breakers[number]);
         StartCoroutine(TimeOutForBreak());
