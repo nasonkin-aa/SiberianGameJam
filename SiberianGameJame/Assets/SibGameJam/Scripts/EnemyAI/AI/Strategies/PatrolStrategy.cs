@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace EnemyAI
 {
     public class PatrolStrategy : IStrategy
@@ -22,6 +24,8 @@ namespace EnemyAI
             _moveable.MoveTo(position);
             _moveable.LookAt(position);
 
+            Debug.Log(_moveable.Reached(position));
+            
             if (_moveable.Reached(position))
             {
                 _patrolPoints.MoveNext();
