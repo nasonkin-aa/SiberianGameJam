@@ -1,10 +1,15 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemIcon : MonoBehaviour
 {
 
-    [SerializeField] string[] ItemFormFactor;
+    RectTransform rectTransform;
+
+    [SerializeField] string[] ItemFormFactorOrig;
+    [SerializeField] string[] ItemFormFactorCurr;
     Vector2Int originPos;
 
     enum direction
@@ -15,14 +20,30 @@ public class ItemIcon : MonoBehaviour
         east
     }
 
+    [SerializeField] direction itemDirection = direction.north;
+
+
     private void Awake()
     {
-        if (ItemFormFactor.Length == 0)
+        if (ItemFormFactorOrig.Length == 0)
         {
-            ItemFormFactor = new string[] { "1" };
+            ItemFormFactorOrig = new string[] { "1" };
         }
 
+
+        rectTransform = GetComponent<RectTransform>();
+        //ItemFormFactor = (string[])TransposeForm().Clone();
+
+        ItemFormFactorCurr = (string[])ItemFormFactorOrig.Clone();
+        RotateItem();
+
         transform.GetComponent<Image>().raycastTarget = false;
+    }
+
+    private void Start()
+    {
+        //Debug.Log(string.Join("\n", TransposeForm(ItemFormFactorOrig)));
+
     }
 
     public void SetOriginPosition(Vector2Int originPos)
@@ -37,12 +58,12 @@ public class ItemIcon : MonoBehaviour
 
     public Vector2Int GetItemSizes()
     {
-        return new Vector2Int(ItemFormFactor[0].Length, ItemFormFactor.Length);
+        return new Vector2Int(ItemFormFactorCurr[0].Length, ItemFormFactorCurr.Length);
     }
 
     public string[] GetItemFormFactor()
     {
-        return ItemFormFactor;
+        return ItemFormFactorCurr;
     }
 
     public void MoveItemOnGrid(Vector2 pos)
@@ -62,24 +83,119 @@ public class ItemIcon : MonoBehaviour
         this.transform.SetParent(transform);
     }
 
-    /*void TransposeForm()
+    public void RotateDirection()
     {
-        int rows = ItemFormFactor.Length;
-        int cols = ItemFormFactor[0].Length;
+        switch (itemDirection)
+        {
+            case direction.north:
+                itemDirection = direction.east;
+                break;
+            case direction.east:
+                itemDirection = direction.south;
+                break;
+            case direction.south:
+                itemDirection = direction.west;
+                break;
+            case direction.west:
+                itemDirection = direction.north;
+                break;
+        }
+
+        RotateItem();
+    }
+
+    void RotateItem()
+    {
+        switch (itemDirection)
+        {
+            case direction.north:
+
+                ItemFormFactorCurr = (string[])ItemFormFactorOrig.Clone();
+
+                rectTransform.eulerAngles = new Vector3(0, 0, 0);
+                rectTransform.pivot = new Vector2(0, 1);
+                break;
+
+            case direction.east:
+                string[] transponadedArr = (string[])TransposeForm(ItemFormFactorOrig);
+
+                for (int i = 0; i < transponadedArr.Length; i++)
+                {
+                    char[] charArr = transponadedArr[i].ToCharArray();
+                    Array.Reverse(charArr);
+                    transponadedArr[i] = new string(charArr);
+                }
+
+                ItemFormFactorCurr = (string[])transponadedArr.Clone();
+
+                rectTransform.eulerAngles = new Vector3(0, 0, 270);
+                rectTransform.pivot = new Vector2(0, 0);
+                break;
+
+            case direction.south:
+                string[] upsideDownArr = (string[])ItemFormFactorOrig.Clone();
+                Array.Reverse(upsideDownArr);
+
+                for (int i = 0; i < upsideDownArr.Length; i++)
+                {
+                    char[] charArr = upsideDownArr[i].ToCharArray();
+                    Array.Reverse(charArr);
+                    upsideDownArr[i] = new string(charArr);
+                }
+
+                ItemFormFactorCurr = (string[])upsideDownArr.Clone();
+
+                rectTransform.eulerAngles = new Vector3(0, 0, 180);
+                rectTransform.pivot = new Vector2(1, 0);
+                break;
+
+            case direction.west:
+                //ItemFormFactor = (string[])TransposeForm().Clone();
+                string[] transponadedArr1 = (string[])TransposeForm(ItemFormFactorOrig);
+
+                /*for (int i = 0; i < transponadedArr1.Length; i++)
+                {
+                    char[] charArr = transponadedArr1[i].ToCharArray();
+                    Array.Reverse(charArr);
+                    transponadedArr1[i] = new string(charArr);
+                }*/
+
+                Array.Reverse(transponadedArr1);
+
+                ItemFormFactorCurr = (string[])transponadedArr1.Clone();
+                //ItemFormFactorCurr = (string[])TransposeForm(ItemFormFactorCurr);
+
+                rectTransform.eulerAngles = new Vector3(0, 0, 90);
+                rectTransform.pivot = new Vector2(1, 1);
+                break;
+
+        }
+    }
+
+    string[] TransposeForm(string[] arr)
+    {
+
+        int rows = arr.Length;
+        int cols = arr[0].Length;
 
         char[][] transposedChars = new char[cols][];
+        string[] transposed = new string[cols];
 
         if (cols == rows)
         {
 
-            //transposedChars = (string[])ItemFormFactor.Clone();
+            
+            for (int c = 0; c < rows; c++)
+            {
+                transposedChars[c] = arr[c].ToCharArray();
+            }
 
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0;  j < i; j++)
+                for (int j = 0; j < i; j++)
                 {
-                    char temp = ItemFormFactor[i][j];
-                    transposedChars[i][j] = ItemFormFactor[j][i];
+                    char temp = transposedChars[i][j];
+                    transposedChars[i][j] = transposedChars[j][i];
                     transposedChars[j][i] = temp;
                 }
             }
@@ -88,13 +204,21 @@ public class ItemIcon : MonoBehaviour
         {
             for (int column = 0; column < cols; column++)
             {
-                transposedChars = new char[rows]
+                transposedChars[column] = new char[rows];
                 for (int row = 0; row < rows; row++)
                 {
-
+                    transposedChars[column][row] = arr[row][column];
                 }
             }
         }
-    }*/
+
+        for (int k = 0; k < cols; k++)
+        {
+            transposed[k] = new string(transposedChars[k]);
+        }
+
+        return (string[])transposed.Clone();
+
+    }
 
 }
