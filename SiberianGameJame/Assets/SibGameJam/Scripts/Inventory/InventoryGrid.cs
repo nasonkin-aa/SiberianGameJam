@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryGrid : MonoBehaviour
 {
@@ -26,8 +22,6 @@ public class InventoryGrid : MonoBehaviour
     ItemIcon[,] items;
     public ItemIcon liftedItem;
 
-    //[SerializeField] ItemIcon[] TestItems;
-
     private void Start()
     {
         tileWidth = GetComponent<Image>().sprite.rect.width;
@@ -41,11 +35,6 @@ public class InventoryGrid : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(width, height);
 
         items = new ItemIcon[gridWidth, gridHeight];
-
-        /*PlaceItem(new Vector2Int(1, 1), TestItems[0]);
-        PlaceItem(new Vector2Int(4, 3), TestItems[1]);
-        PlaceItem(new Vector2Int(2, 2), TestItems[2]);
-        PlaceItem(new Vector2Int(0, 2), TestItems[3]);*/
 
     }
 

@@ -93598,6 +93598,10 @@ PrefabInstance:
       value: -0.17969513
       objectReference: {fileID: 0}
     - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 70348258}
+    - target: {fileID: 5820778367038055283, guid: 00e60c21252e8ff46947ff79306a3275, type: 3}
       propertyPath: ground.m_Bits
       value: 256
       objectReference: {fileID: 0}

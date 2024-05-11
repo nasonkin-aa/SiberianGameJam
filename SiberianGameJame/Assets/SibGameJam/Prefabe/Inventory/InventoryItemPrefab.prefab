@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5842588730884633189}
   - component: {fileID: 1925136315196807173}
   m_Layer: 5
-  m_Name: GemIconPrefab
+  m_Name: InventoryItemPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

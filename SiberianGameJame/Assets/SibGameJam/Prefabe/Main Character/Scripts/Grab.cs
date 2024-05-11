@@ -8,6 +8,8 @@ public class Grab : MonoBehaviour
 
     [SerializeField]
     private LayerMask grabMask;
+    [SerializeField]
+    private LayerMask pickUpMask;
 
     [SerializeField]
     private float grabRadius = 0.1f;
@@ -28,11 +30,8 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Rigidbody2D lowerArmBody;
 
-    private bool _isHoldItem;
-    private Item _attachedItem;
-
-    public event Action<Item> ItemAttached;
-    public event Action<Item> ItemDetached;
+    [SerializeField] CharacterSlot characterSlotR;
+    [SerializeField] CharacterSlot characterSlotL;
 
     private void Update()
     {
@@ -86,6 +85,12 @@ public class Grab : MonoBehaviour
         if (_hold)
         {
             var count = Physics2D.OverlapCircleNonAlloc(transform.position, grabRadius, _hits, grabMask);
+            Collider2D[] pickUpItems = new Collider2D[1];
+
+            var itemsCount = Physics2D.OverlapCircleNonAlloc(transform.position, grabRadius, pickUpItems, pickUpMask);
+            if (itemsCount > 0 && pickUpItems[0] != null)
+                CollisionEnt(pickUpItems[0]);
+
             if (count > 0 && _target != _hits[0])
             {
                 _target = _hits[0];
@@ -121,5 +126,22 @@ public class Grab : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, grabRadius);
+    }
+
+    public void CollisionEnt(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            var icon = collision.transform.GetComponent<PickableItem>().prefabForInventory.GetComponent<ItemIcon>();
+            if (characterSlotR != null)
+            {
+                characterSlotR.EquipItem(icon);
+                Destroy(collision.gameObject);
+            } else if (characterSlotL != null)
+            {
+                characterSlotL.EquipItem(icon);
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }
