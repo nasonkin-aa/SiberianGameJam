@@ -95,9 +95,11 @@ public class ArmsController : MonoBehaviour
             Debug.Log(_flip ? "Flipped left" : "Flipped right");
             (leftArm.MouseButton, rightArm.MouseButton) = (rightArm.MouseButton, leftArm.MouseButton);
             (leftArm.Hand.mouseButton, rightArm.Hand.mouseButton) = (rightArm.Hand.mouseButton, leftArm.Hand.mouseButton);
-            //leftArm.Flip = _flip;
-            //rightArm.Flip = _flip;
-            transform.localScale = new Vector3(_flip ? -1 : 1, 1, 1);
+            var xScale = Mathf.Abs(transform.localScale.x);
+            var modifier = _flip ? -xScale : xScale;
+            var scale = transform.localScale;
+            scale.x = modifier;
+            transform.localScale = scale;
             Flipped?.Invoke(_flip);
         }
     }
